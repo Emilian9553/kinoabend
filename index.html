@@ -293,7 +293,7 @@
         </section>
 
         <!-- ==========================================
-             2. TERMIN-ABSTIMMUNG (Ohne Samstag/Halloween + mit Uhrzeit)
+             2. TERMIN-ABSTIMMUNG (Diese + Nächste Woche)
              ========================================== -->
         <section class="glass-card rounded-2xl p-5 sm:p-7">
             <div class="mb-5">
@@ -750,7 +750,7 @@
         const chatCollection = collection(db, 'artifacts', appId, 'public', 'data', 'kinoChat');
 
         // ============================================================================
-        // STAMMDATEN (Freunde, Termine Nächste Woche, Sitze, Snacks & Getränke)
+        // STAMMDATEN (Freunde, Termine Diese + Nächste Woche, Sitze, Snacks & Getränke)
         // ============================================================================
         const CHARACTERS = [
             { name: "Emilian", icon: "🚀" },
@@ -759,8 +759,11 @@
             { name: "Luis", icon: "🎬" }
         ];
 
-        // NEU: Jeden Tag nächste Woche!
+        // NEU: Freitag, Samstag, Sonntag (diese Woche) und Montag-Sonntag (nächste Woche)
         const AVAILABLE_DAYS = [
+            { id: "Freitag (diese Woche)", label: "Freitag", sub: "Diese Woche" },
+            { id: "Samstag (diese Woche)", label: "Samstag", sub: "Diese Woche" },
+            { id: "Sonntag (diese Woche)", label: "Sonntag", sub: "Diese Woche" },
             { id: "Montag (nächste Woche)", label: "Montag", sub: "Nächste Woche" },
             { id: "Dienstag (nächste Woche)", label: "Dienstag", sub: "Nächste Woche" },
             { id: "Mittwoch (nächste Woche)", label: "Mittwoch", sub: "Nächste Woche" },
@@ -791,7 +794,7 @@
         // Aktueller Nutzer-State
         let currentState = {
             user: null,
-            dates: {}, // { "Montag (nächste Woche)": "19:00", ... }
+            dates: {}, 
             movie: null,
             seat: null,
             snacks: [],
@@ -1642,4 +1645,3 @@
     </script>
 </body>
 </html>
-```eof
